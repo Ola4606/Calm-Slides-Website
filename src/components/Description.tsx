@@ -8,7 +8,7 @@ function Description() {
         <p className='text-7xl font-title font-bold text-purple-600'>Watch,</p>
         <p className='text-8xl font-title font-extrabold text-purple-700'>Relax.</p>
 
-        <p className='text-lg font-causal font-normal text-black my-7'>Relax.</p>
+        <p className='text-base font-causal font-normal text-black my-7'>View thousands of random images as you relax to calm music...</p>
 
         <div className='inline-block transform duration-300 hover:scale-110'>
         <StartBtn btnColor="black"/>

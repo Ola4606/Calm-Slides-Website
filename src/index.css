@@ -677,6 +677,22 @@ video {
   padding-bottom: 1.25rem;
 }
 
+.pr-32{
+  padding-right: 8rem;
+}
+
+.pl-5{
+  padding-left: 1.25rem;
+}
+
+.pb-2{
+  padding-bottom: 0.5rem;
+}
+
+.text-right{
+  text-align: right;
+}
+
 .font-title{
   font-family: Oswald;
 }
@@ -729,6 +745,16 @@ video {
   line-height: 1.75rem;
 }
 
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-bold{
   font-weight: 700;
 }
@@ -743,6 +769,10 @@ video {
 
 .font-extrabold{
   font-weight: 800;
+}
+
+.font-black{
+  font-weight: 900;
 }
 
 .text-white{
@@ -768,6 +798,32 @@ video {
 .text-purple-700{
   --tw-text-opacity: 1;
   color: rgb(126 34 206 / var(--tw-text-opacity));
+}
+
+.underline{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.decoration-mainColor{
+  -webkit-text-decoration-color: #CF9FFF;
+          text-decoration-color: #CF9FFF;
+}
+
+.underline-offset-4{
+  text-underline-offset: 4px;
+}
+
+.underline-offset-8{
+  text-underline-offset: 8px;
+}
+
+.underline-offset-2{
+  text-underline-offset: 2px;
+}
+
+.underline-offset-\[-3px\]{
+  text-underline-offset: -3px;
 }
 
 .transition{
