@@ -1,8 +1,11 @@
 import React from 'react';
+import Nav from './components/Nav';
 
 function App() {
   return (
-   <p className='font-bold text-lg text-red-700'>Calm Slides. GOD please help me</p>
+   <div>
+     <Nav />
+   </div>
   );
 }
 

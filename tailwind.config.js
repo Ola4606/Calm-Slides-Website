@@ -4,7 +4,16 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        title: "Oswald",
+        causal: "Noto Sans",
+      }, 
+
+      colors: {
+        mainColor: "#CF9FFF",
+      }
+    },
   },
   plugins: [],
 }
