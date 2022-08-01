@@ -5,7 +5,7 @@ import Nav from './components/Nav';
 
 function App() {
   return (
-   <div className='bg-slate-100 min-h-[100vh]'>
+   <div className='min-h-[100vh]'>
      <Nav />
      <Description />
      {/* about */}
