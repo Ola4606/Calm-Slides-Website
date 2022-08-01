@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
+import StartBtn from "./StartBtn";
 
 function Nav() {
   return (
-    <div className='bg-mainColor px-3 py-2 flex justify-between items-center'>
-
-        <span className='text-white text-2xl font-bold font-title'>Calm Slides</span>
-        <span className='text-black text-sm bg-white p-[6px] rounded-md font-normal 
-        font-mono cursor-pointer transition duration-300 ease-out hover:shadow-md '>Start Session</span>
-
+    <div className="bg-mainColor px-3 py-2 flex justify-between items-center">
+      <span className="text-white text-2xl font-bold font-title">
+        Calm Slides
+      </span>
+      <StartBtn btnColor="white"/>
     </div>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
