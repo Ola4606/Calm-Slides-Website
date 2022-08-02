@@ -9,3 +9,7 @@
     @apply font-mono bg-gray-200 p-1 rounded-md;
 
 }
+
+.slideImage {
+    @apply w-[100%] h-[100%] aspect-square object-cover;
+}
