@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.highlight {
+
+    @apply font-mono bg-gray-200 p-1 rounded-md;
+
+}
