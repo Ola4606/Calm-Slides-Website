@@ -1,7 +1,9 @@
 import React from 'react';
 import About from './components/About';
 import Description from './components/Description';
+import HowToUse from './components/HowToUse';
 import Nav from './components/Nav';
+import Preview from './components/Preview';
 
 function App() {
   return (
@@ -11,9 +13,9 @@ function App() {
      {/* about */}
      <About /> 
      {/* how to use */}
-     <Description />
+     <HowToUse />
      {/* preview */}
-     <Description />
+     <Preview />
    </div>
   );
 }

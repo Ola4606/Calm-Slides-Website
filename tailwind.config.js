@@ -11,7 +11,7 @@ module.exports = {
       }, 
 
       colors: {
-        mainColor: "#CF9FFF",
+        // mainColor: "#CF9FFF",
       }
     },
   },
