@@ -1,4 +1,4 @@
-import React from "react";
+
 import StartBtn from "./StartBtn";
 
 function HowToUse() {

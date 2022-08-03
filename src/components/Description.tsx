@@ -1,4 +1,4 @@
-import React from "react";
+
 import DescriptionImageGridPreview from "./DescriptionImageGridPreview";
 import StartBtn from "./StartBtn";
 

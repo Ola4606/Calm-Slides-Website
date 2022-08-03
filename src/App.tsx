@@ -1,4 +1,4 @@
-import React from 'react';
+
 import About from './components/About';
 import Description from './components/Description';
 import HowToUse from './components/HowToUse';

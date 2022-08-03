@@ -1,4 +1,4 @@
-import React from "react";
+
 
 type StartBtnPropType = {
   btnColor: String;
