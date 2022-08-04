@@ -1,5 +1,5 @@
 import PreviewImagesGridMarquee from "./PreviewImagesGridMarquee";
-import StartBtn from "./StartBtn";
+import StartBtn from "../StartBtn";
 
 function Preview() {
   return (
@@ -22,7 +22,7 @@ function Preview() {
           </span>
         </div>
 
-        <p className="font-causal font-normal text-lg">With just 1000 images:</p>
+        <p className="font-mono text-lg font-bold">With just 200 images:</p>
       </div>
 
       <PreviewImagesGridMarquee />

@@ -1,6 +1,7 @@
 import { memo, useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
-import getImagesFromMongoDB from "../functions/getImagesFromMongoDB";
+import previewImages from "../../data/previewImages";
+
 
 function PreviewImagesGridMarquee() {
   let imgsUrls: String[] = [];
@@ -44,37 +45,25 @@ function PreviewImagesGridMarquee() {
   }
 
   useEffect(() => {
-    async function getAndSetImages() {
-      const imagesData: any[] = await getImagesFromMongoDB(18);
-
-      if(imagesData !== null) {
-
-        imgsUrls = imagesData.map((i) => {
-            return i.url;
-          });
-          loopCount = Math.trunc(imgsUrls.length / 3);
-          setElements();
-
-      }
-
-      
-      
-    }
-
-    getAndSetImages();
+        imgsUrls = previewImages;
+        loopCount = Math.trunc(imgsUrls.length / 3);
+    setElements();
   }, []);
 
   return (
     <div>
-      {marqueeElements === [] ? (
+      {marqueeElements.length === 0 ? 
         <div className="flex justify-center items-center font-mono text-lg font-bold">
           <p>Loading Images.. Please Wait</p>
         </div>
-      ) : (
-        <Marquee>
-          <div className="flex gap-5 justify-start">{marqueeElements}</div>
+      : 
+        <Marquee
+        speed={40}
+        gradient={false}
+        >
+          <div className="flex pl-5 gap-5 justify-start">{marqueeElements}</div>
         </Marquee>
-      )}
+      }
     </div>
   );
 }

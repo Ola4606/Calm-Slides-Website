@@ -1,6 +1,6 @@
 
 import DescriptionImageGridPreview from "./DescriptionImageGridPreview";
-import StartBtn from "./StartBtn";
+import StartBtn from "../StartBtn";
 
 function Description() {
 
