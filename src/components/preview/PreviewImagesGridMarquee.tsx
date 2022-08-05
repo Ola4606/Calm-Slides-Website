@@ -7,7 +7,7 @@ function PreviewImagesGridMarquee() {
   let imgsUrls: String[] = [];
   let loopCount = Math.trunc(imgsUrls.length / 3);
 
-  let [marqueeElements, setMarqueeElements] = useState([]);
+  const [marqueeElements, setMarqueeElements] = useState([]);
 
   async function setElements() {
     let holderArray: any = [];
@@ -20,7 +20,7 @@ function PreviewImagesGridMarquee() {
       holderArray.push(
         <div
           key={i}
-          className="flex flex-col w-[150px] h-[600px] overflow-hidden justify-between gap-5"
+          className="flex flex-col w-[150px] h-[500px] md:h-[600px]  overflow-hidden justify-between gap-5"
         >
           <img
             src={imgsUrls[startIndex] + "&w=150&q=90&auto=format"}

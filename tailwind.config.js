@@ -10,9 +10,10 @@ module.exports = {
         causal: "Noto Sans",
       }, 
 
-      colors: {
-        // mainColor: "#CF9FFF",
+      screens: {
+        xsm: "375px"
       }
+
     },
   },
   plugins: [],

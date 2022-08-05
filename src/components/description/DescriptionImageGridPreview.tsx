@@ -2,6 +2,7 @@
 import "../../../node_modules/react-grid-layout/css/styles.css";
 import "../../../node_modules/react-resizable/css/styles.css";
 import GridLayout from "react-grid-layout";
+import {memo} from "react";
 
 function DescriptionImageGridPreview() {
   const layout = [
@@ -21,8 +22,8 @@ function DescriptionImageGridPreview() {
       className="layout"
       layout={layout}
       cols={2}
-      rowHeight={160}
-      width={320}
+      rowHeight={120}
+      width={240}
       autoSize={true}
       margin={[0, 0]}
       containerPadding={[0, 0]}
@@ -43,4 +44,4 @@ function DescriptionImageGridPreview() {
   );
 }
 
-export default DescriptionImageGridPreview;
+export default memo(DescriptionImageGridPreview);

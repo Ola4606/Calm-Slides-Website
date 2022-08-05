@@ -1,39 +1,40 @@
 import PreviewImagesGridMarquee from "./PreviewImagesGridMarquee";
 import StartBtn from "../StartBtn";
+import {memo} from "react";
 
 function Preview() {
   return (
-    <div className="pt-12 pb-5">
-      <div className="px-32 pb-5">
-        <div className="flex justify-between items-center pb-4">
-          <span className="underline underline-offset-4 font-causal font-extrabold text-2xl decoration-purple-400 text-center">
+    <div className="pt-5 lg:pt-12 pb-3 lg:pb-5pb-3 lg:pb-5">
+      <div className="px-5 lg:px-32 pb-3 lg:pb-5">
+        <div className="flex flex-col justify-start items-center md:flex md:flex-row md:justify-between md:items-center pb-4">
+          <span className="underline underline-offset-4 font-causal font-extrabold text-center text-xl md:text-2xl decoration-purple-400 pb-4">
             A Preview:
           </span>
 
-          <span className="font-causal font-normal text-center text-lg">
+          <span className="font-causal font-normal text-base md:text-lg ">
             Images by{" "}
             <a
               href="https://unsplash.com/"
               target={"_blank"}
-              className="font-causal font-normal text-right text-lg underline text-blue-400"
+              className="font-causal font-normal text-base md:text-lg underline text-blue-400"
             >
               Unsplash
             </a>
           </span>
         </div>
 
-        <p className="font-mono text-lg font-bold">With just 200 images:</p>
+        <p className="font-mono text-base md:text-lg font-bold text-center md:text-start">With just 200 images:</p>
       </div>
 
       <PreviewImagesGridMarquee />
 
       <div className="flex justify-center pt-10">
-      <div className="inline-block transform duration-300 hover:scale-110">
-        <StartBtn btnColor="black" />
-      </div>
+        <div className="md:inline-block transform duration-300 md:hover:scale-110">
+          <StartBtn btnColor="black" />
+        </div>
       </div>
     </div>
   );
 }
 
-export default Preview;
+export default memo(Preview);

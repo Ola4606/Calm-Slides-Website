@@ -1,13 +1,13 @@
-
 import StartBtn from "./StartBtn";
+import {memo} from "react";
 
 function HowToUse() {
   return (
-    <div className="px-32 pt-12 pb-5 flex flex-col items-center">
-      <p className="underline underline-offset-4 font-causal font-extrabold text-2xl decoration-purple-400 pb-4 text-center">
+    <div className="px-5 pt-5 pb-3 lg:px-32 lg:pt-12 lg:pb-5">
+      <p className="underline underline-offset-4 font-causal font-extrabold text-center text-xl md:text-2xl decoration-purple-400 pb-4">
         How to use Calm Slides:
       </p>
-      <ol className="list-disc list-inside flex flex-col justify-center items-start gap-2 font-causal font-normal text-lg text-justify leading-loose pb-7">
+      <ol className="list-disc list-inside flex flex-col justify-center items-start gap-2 font-causal font-normal text-base md:text-lg text-justify leading-loose pb-7">
         <li>
           Click on the <span className="highlight">Start Session</span> button,
           which will redirect you to a{" "}
@@ -22,19 +22,19 @@ function HowToUse() {
           , and the{" "}
           <span className="highlight">
             <b>time period</b> (for which the relaxing session will last)
-          </span>.
+          </span>
+          .
         </li>
         <li>
           Click on the <span className="highlight">Start</span> button, then{" "}
           <span className="highlight">Listen, Watch, Relax</span>.
         </li>
       </ol>
-
-      <div className='inline-block transform duration-300 hover:scale-110'>
-        <StartBtn btnColor="black"/>
+      <div className="flex justify-center transform duration-300 md:hover:scale-110">
+        <StartBtn btnColor="black" />
       </div>
     </div>
   );
 }
 
-export default HowToUse;
+export default memo(HowToUse);
