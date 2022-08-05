@@ -245,6 +245,10 @@ function getAndSetImages() {
                   </svg>
                 </div>
               )}
+
+<span className="font-causal text-start text-base text-gray-500 ">
+                Audio is currently unavaliable
+              </span>
               </div>
   
               
