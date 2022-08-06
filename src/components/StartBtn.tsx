@@ -1,4 +1,5 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import {memo} from "react";
 
 type StartBtnPropType = {
   btnColor: String;
@@ -6,16 +7,18 @@ type StartBtnPropType = {
 
 function StartBtn({ btnColor }: StartBtnPropType) {
   return (
-    <span
-      className={
-        btnColor === "white"
-          ? "text-black text-sm bg-white p-[6px] rounded-md font-normal font-mono cursor-pointer transition duration-300 ease-out hover:shadow-md "
-          : "text-white text-sm bg-black p-[10px] rounded-md font-normal font-mono cursor-pointer transition duration-300 ease-out hover:shadow-md"
-      }
-    >
-      Start Session
-    </span>
+    <Link to="session">
+      <span
+        className={
+          btnColor === "white"
+            ? "text-black text-sm bg-white p-[5px] md:p-[6px] rounded-md font-normal font-mono cursor-pointer transition duration-300 ease-out hover:shadow-md "
+            : "text-white text-sm bg-black p-[6px] md:p-[10px] rounded-md font-normal font-mono cursor-pointer transition duration-300 ease-out hover:shadow-md"
+        }
+      >
+        Start Session
+      </span>
+    </Link>
   );
 }
 
-export default StartBtn;
+export default memo(StartBtn);
