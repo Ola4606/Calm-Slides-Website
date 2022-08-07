@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 import getImagesFromMongoDB from "../../functions/getImagesFromMongoDB";
 import { useTimer } from "react-timer-hook";
 import { useNavigate } from "react-router-dom";
-import { Howl, Howler } from "howler";
+// import { Howl, Howler } from "howler";
 import AbortSession from "./AbortSession";
 
 type MainSlidesMarqueePropType = {
@@ -169,12 +169,12 @@ function MainSlidesMarquee({
     return t < 10 ? "0" + t : t;
   };
 
-  var sound = new Howl({
-    src: ["../../audios/1.mp3", "../../audios/2.mp3", "../../audios/3.mp3"],
-    loop: true,
-    volume: 1,
-    autoplay: true,
-  });
+  // var sound = new Howl({
+  //   src: ["../../audios/1.mp3", "../../audios/2.mp3", "../../audios/3.mp3"],
+  //   loop: true,
+  //   volume: 1,
+  //   autoplay: true,
+  // });
 
   return (
     <div>
