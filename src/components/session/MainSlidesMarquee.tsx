@@ -3,7 +3,8 @@ import Marquee from "react-fast-marquee";
 import getImagesFromMongoDB from "../../functions/getImagesFromMongoDB";
 import { useTimer } from "react-timer-hook";
 import { useNavigate } from "react-router-dom";
-// import {useAsyncMemo} from "use-async-memo"
+import { Howl, Howler } from "howler";
+import AbortSession from "./AbortSession";
 
 type MainSlidesMarqueePropType = {
   timeInMins: number;
@@ -21,20 +22,19 @@ function MainSlidesMarquee({
   let loopCount = Math.trunc(imgsUrls.length / 3);
 
   const [marqueeElements, setMarqueeElements] = useState<any>([]);
-  const [faultyInternetConnection, setFaultyInternetConnection] = useState<boolean>(false);
+  const [faultyInternetConnection, setFaultyInternetConnection] =
+    useState<boolean>(false);
 
-  
-
-  async function getImageDataFromMDB () {
+  async function getImageDataFromMDB() {
     console.log("Started func");
     let imagesMetaData: any = await getImagesFromMongoDB(1500);
     // console.log(imagesMetaData.length)
     imagesData = imagesMetaData;
-    console.log(imagesData)
+    console.log(imagesData);
   }
 
-  if(!functionRan) {
-    getImageDataFromMDB(); 
+  if (!functionRan) {
+    getImageDataFromMDB();
   }
 
   functionRan = true;
@@ -44,40 +44,22 @@ function MainSlidesMarquee({
     getAndSetImages();
   }, [imagesData]);
 
-function getAndSetImages() {
-
-      
-    if(imagesData === null) {
-
+  function getAndSetImages() {
+    if (imagesData === null) {
       setFaultyInternetConnection(true);
-      
-    } else{
-      if(imagesData.length !== 0) {
+    } else {
+      if (imagesData.length !== 0) {
         console.log("got here");
         imgsUrls = imagesData.map((i: any) => {
           return i.url;
         });
         loopCount = Math.trunc(imgsUrls.length / 3);
         console.log(loopCount);
-        
-          setElements();
-        
+
+        setElements();
       }
     }
-    
-  
-}
-
-
-  
-
-
-
-
-
-
-
-
+  }
 
   async function setElements() {
     let holderArray: any = [];
@@ -130,8 +112,6 @@ function getAndSetImages() {
   //   getAndSetImages();
   // }, []);
 
-
-
   const marqueeSpeedCalculated = useMemo(() => {
     return calcSpeed(slideSpeed);
   }, [slideSpeed]);
@@ -180,103 +160,117 @@ function getAndSetImages() {
     onExpire: () => {
       functionRan = false;
       imagesData = [];
-      navigate('/sessionEnded');
+      navigate("/sessionEnded");
     },
     autoStart: true,
   });
 
   const format = (t: number) => {
-    return t < 10 ? '0' + t : t;
-};
+    return t < 10 ? "0" + t : t;
+  };
+
+  var sound = new Howl({
+    src: ["../../audios/1.mp3", "../../audios/2.mp3", "../../audios/3.mp3"],
+    loop: true,
+    volume: 1,
+    autoplay: true,
+  });
 
   return (
     <div>
-
-      {
-        faultyInternetConnection ?
-
-        <div className="flex justify-center items-center font-mono text-lg text-center font-bold mt-9">
-            <p>Seems like there might be some issuses with your internet connection, please fix it and refresh the website</p>
-          </div>
-
-        :
-
-        <div>
-        {marqueeElements.length === 0 ? (
-          <div className="flex justify-center items-center font-mono text-lg text-center font-bold mt-9">
-            <p>Loading Images.. Please Wait</p>
-          </div>
-        ) : (
-          <div>
-            <div className="flex justify-start items-center gap-3 mt-9 mb-4 md:mb-7 px-5 lg:px-32">
-              <span className="font-causal font-bold text-start text-xl md:text-2xl ">
-                {format(minutes)}:{format(seconds)}
-              </span>
-  
-              <div>
-              {isRunning ? (
-                <div onClick={pause} className="text-black">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-[34px] w-[34px] md:h-[40px] md:w-[40px]"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              ) : (
-                <div onClick={resume} className="text-black">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-[34px] w-[34px] md:h-[40px] md:w-[40px]"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              )}
-
-<span className="font-causal text-start text-base text-gray-500 ">
-                Audio is currently unavaliable
-              </span>
-              </div>
-  
+      <div className="px-5 lg:px-32 pb-3 lg:pb-5">
+        {/* abort session */}
+        <div className="inline-block transform duration-300 md:hover:scale-110">
+          <AbortSession
+            handleClick={() => {
+              functionRan = false;
+      imagesData = [];
+      navigate("/sessionEnded");
               
+            }}
+          />
+        </div>
+      </div>
+
+      {faultyInternetConnection ? (
+        <div className="flex justify-center items-center font-mono text-lg text-center font-bold mt-9">
+          <p>
+            Seems like there might be some issuses with your internet
+            connection, please fix it and refresh the website
+          </p>
+        </div>
+      ) : (
+        <div>
+          {marqueeElements.length === 0 ? (
+            <div className="flex justify-center items-center font-mono text-lg text-center font-bold mt-9">
+              <p>Loading Images.. Please Wait</p>
             </div>
-  
-            <div onMouseEnter={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-            }}>
-            <Marquee speed={marqueeSpeedCalculated} gradient={false} play={isRunning}>
-              <div className="flex pl-5 gap-5 justify-start">
-                {marqueeElements}
+          ) : (
+            <div>
+              <div className="flex justify-start items-center gap-3 mt-9 mb-4 md:mb-7 px-5 lg:px-32">
+                <span className="font-causal font-bold text-start text-xl md:text-2xl ">
+                  {format(minutes)}:{format(seconds)}
+                </span>
+
+                <div>
+                  {isRunning ? (
+                    <div onClick={pause} className="text-black">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-[34px] w-[34px] md:h-[40px] md:w-[40px]"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div onClick={resume} className="text-black">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-[34px] w-[34px] md:h-[40px] md:w-[40px]"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  )}
+
+                  <span className="font-causal text-start text-base text-gray-500 ">
+                    Audio is currently unavaliable
+                  </span>
+                </div>
               </div>
-            </Marquee>
+
+              <div
+                onMouseEnter={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                }}
+              >
+                <Marquee
+                  speed={marqueeSpeedCalculated}
+                  gradient={false}
+                  play={isRunning}
+                >
+                  <div className="flex pl-5 gap-5 justify-start">
+                    {marqueeElements}
+                  </div>
+                </Marquee>
+              </div>
             </div>
-          </div>
-        )}
-
-</div>
-
-      }
-
-
-
-
-
-
-      
+          )}
+        </div>
+      )}
     </div>
   );
 }

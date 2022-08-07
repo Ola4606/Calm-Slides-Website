@@ -16,6 +16,7 @@ function Preview() {
             <a
               href="https://unsplash.com/"
               target={"_blank"}
+              rel="noreferrer"
               className="font-causal font-normal text-base md:text-lg underline text-blue-400"
             >
               Unsplash

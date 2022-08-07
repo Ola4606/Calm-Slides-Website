@@ -23,6 +23,7 @@ function About() {
           <a
             href="https://twitter.com/4real_Dev"
             target={"_blank"}
+            rel="noreferrer"
             className="font-causal font-normal text-base md:text-lg underline text-blue-400"
           >
         &nbsp;Adeyemo OlaOluwa

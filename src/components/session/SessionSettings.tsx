@@ -1,4 +1,5 @@
 import {memo} from "react";
+import AbortSession from "./AbortSession";
 
 type SessionSettingsPropType = {
   sessionTime: number,
@@ -59,6 +60,14 @@ function SessionSettings({
 
   return (
     <div>
+
+
+          {/* abort session */}
+          <div className="inline-block transform duration-300 md:hover:scale-110">
+            <AbortSession handleClick={()=>{}}/>
+          </div>
+        
+
       <p className="font-causal font-bold text-start text-xl md:text-2xl mt-9 mb-4 md:mb-7">
         Session Settings:
       </p>
