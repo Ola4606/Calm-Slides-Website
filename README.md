@@ -7,7 +7,7 @@
 
 CalmSlides in basic terms is a marquee-styled slideshow of randomly selected images.
 
-It is powered by another project of mine called the “CalmSlides Bot” _(this was a worker bot built with NodeJS, that ran for 4 days, and stored the metadata of about 100,000 Unsplash images | which was all legal according to the Unsplash API guidelines)_ .
+It is powered by another project of mine called the “[CalmSlides Bot](https://github.com/Ola4606/Calm-Slides-Bot)” _(this was a worker bot built with NodeJS, that ran for 4 days, and stored the metadata of about 100,000 Unsplash images | which was all legal according to the Unsplash API guidelines)_ .
 
 On the website, users can have “Relaxation Sessions” for which they can set the time _(how long the slideshow will last, e.g., 5mins)_ and speed _(how fast the slideshow will move, e.g., Medium)_.
 
