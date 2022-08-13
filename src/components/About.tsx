@@ -21,7 +21,7 @@ function About() {
           <span className="block md:flex font-causal font-normal text-base md:text-lg">
           Built by
           <a
-            href="https://twitter.com/4real_Dev"
+            href="https://laolu.netlify.app/"
             target={"_blank"}
             rel="noreferrer"
             className="font-causal font-normal text-base md:text-lg underline text-blue-400"

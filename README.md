@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# CalmSlides
+## Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Live URL:** [View CalmSlides Live](https://calmslides.netlify.app/)
 
-## Available Scripts
+![CalmSlides Home Page](https://firebasestorage.googleapis.com/v0/b/portfolio-25f62.appspot.com/o/CalmSlides%2F1.png?alt=media "CalmSlides Home Page")
 
-In the project directory, you can run:
+CalmSlides in basic terms is a marquee-styled slideshow of randomly selected images.
 
-### `npm start`
+It is powered by another project of mine called the “CalmSlides Bot” _(this was a worker bot built with NodeJS, that ran for 4 days, and stored the metadata of about 100,000 Unsplash images | which was all legal according to the Unsplash API guidelines)_ .
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+On the website, users can have “Relaxation Sessions” for which they can set the time _(how long the slideshow will last, e.g., 5mins)_ and speed _(how fast the slideshow will move, e.g., Medium)_.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The website uses the image URLs from the metadata stored on my MongoDB database to power the relaxation sessions, but there were some problems I ran into while building this project with MongoDB:
 
-### `npm test`
+![CalmSlides Session Settings](https://firebasestorage.googleapis.com/v0/b/portfolio-25f62.appspot.com/o/CalmSlides%2F2.png?alt=media "CalmSlides Session Settings")
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Immediate Problem:**  I am using the MongoDB free tier, meaning that there are a limited number of connections allowed at a time to the database _(about 500 simultaneous connections)_. So, all users could not be connected to the database directly.
 
-### `npm run build`
+**Solution:**  I used the MongoDB Data API service to act as a medium between the users and the MongoDB database. This solves the immediate problem because, all users now retrieve data using an API, rather than connecting directly with the database; meaning that only 1 connection is being made to the database on behalf of all users.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Further Problem:**  MongoDB prevents their Data API service from being used directly from the browser _(client-side)_, due to some CORS policy violations, which was a problem I did not know about until after writing the code to get data using the Data API service.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Solution:**  I used the MongoDB Realm service _(through the realm-web NPM package)_ which allows users to make the MongoDB Data API calls _(as a function)_ from the MongoDB servers and returns the data to them on the browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**A Further Further Problem:**  I am using MongoDB Realm on its free tier, hence I am limited to 1 million function calls per month, after which users cannot use my website.
 
-### `npm run eject`
+**Solution (Coming Soon!):**  I aim to build an API using ExpressJS that runs the MongoDB API calls server side to retrieve the data for the users. I will make requests to this API using the Axios NPM package and return the data to the browsers. This will allow me to avoid MongoDB Realm.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![A CalmSlides Session](https://firebasestorage.googleapis.com/v0/b/portfolio-25f62.appspot.com/o/CalmSlides%2F5.png?alt=media "A CalmSlides Session")
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Using TailwindCSS breakpoints, I was able to make it fully responsive for mobile, tablet, and laptop screens.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+While building this website, I was able to improve my skills on some React principles and concepts, such as:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+*   Using React Hooks _(namely useState, useEffect, and useMemo)_
+*   Using React Memo
+*   Passing and receiving props
 
-## Learn More
+I also learned new principles, which included:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+*   The React Router DOM NPM Package which allowed me to add multi-page navigation to the website
+*   The Realm-web NPM package which allowed me to use MongoDB Realm services
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Key NPM Packages used:**  realm-web, react-timer-hook, react-router-dom
+
+**Read on more of my projects over on my website:** [Adeyemo OlaOluwa](https://laolu.netlify.app/)
+

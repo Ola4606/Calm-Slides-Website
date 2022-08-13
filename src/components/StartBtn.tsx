@@ -7,7 +7,7 @@ type StartBtnPropType = {
 
 function StartBtn({ btnColor }: StartBtnPropType) {
   return (
-    <Link to="session">
+    <Link to="/session">
       <span
         className={
           btnColor === "white"

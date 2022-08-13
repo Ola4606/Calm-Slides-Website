@@ -11,6 +11,7 @@ import {
 import SessionMain from './components/session/SessionMain';
 import PageNotFound from './components/PageNotFound';
 import SessionEnded from './components/session/SessionEnded';
+import ScrollToTop from './components/general/scrollToTop';
 
 
 
@@ -21,10 +22,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Router>
+      <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}/>
-      <Route path="session" element={<SessionMain />} />
-      <Route path="sessionEnded" element={<SessionEnded />} />
+      <Route path="/session" element={<SessionMain />} />
+      <Route path="/sessionEnded" element={<SessionEnded />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   </Router>
